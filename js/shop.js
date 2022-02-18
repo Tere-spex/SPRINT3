@@ -84,6 +84,11 @@ function cleanCart(cartList) {
 // Exercise 3
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
+    nuevoArrayPrecios = cartList.map(cartProducts => cartProducts.price);
+    total = 0;
+    for(let i = 0; i <= nuevoArrayPrecios.length; i++){
+        total += nuevoArrayPrecios[i];
+    }
 }
 
 // Exercise 4
