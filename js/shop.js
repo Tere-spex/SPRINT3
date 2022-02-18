@@ -108,6 +108,10 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
     // Apply promotions to each item in the array "cart"
+    generateCart();
+    for(var item in cart){
+       cart[item.price] = cart[item.price] *0.15;
+    }
 }
 
 
