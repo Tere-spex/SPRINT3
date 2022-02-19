@@ -106,12 +106,16 @@ function generateCart() {
 }
 
 // Exercise 5
-function applyPromotionsCart() {
+var descuento = 0.15;
+function applyPromotionsCart(cart) {
     // Apply promotions to each item in the array "cart"
-    generateCart();
+    var precio = parseFloat(cart[item.price]);
+    var desc = parseInt(cart[item.price] * descuento); 
+
     for(var item in cart){
-       cart[item.price] = cart[item.price] *0.15;
+        precioFinal = descuento(precio - desc);
     }
+    descuento.innerHTML = precioFinal;
 }
 
 

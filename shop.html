@@ -32,6 +32,7 @@
         <li class="nav-item">
           <a class="nav-link text-white btn" id="cart" type="button" data-toggle="modal"
             data-target="#cartModal" onclick="cart()" href="#beauty"><i class="fas fa-cart-arrow-down"></i>
+           
             My Cart</a>
         </li>
       </ul>
@@ -51,6 +52,12 @@
           <h5 class="card-title">cooking oil</h5>
           <h1 class="card-text">$10.5</h1>
           <button type="button" onclick="buy(1)" class="btn btn-primary">Add to cart</button>
+
+
+          <br>
+          <span>Descuento:</span>
+          <input type="button" id="descuento" onclick="applyPromotionsCart(cart)" min="0" max="100" step="1">
+                  
         </div>
       </div>
 
