@@ -75,9 +75,6 @@ function buy(id) {
 }
 
 // Exercise 2
-
-
-
 function cleanCart() {
     while (cartList.length > 0) {
         cartList.pop();
@@ -88,25 +85,40 @@ function cleanCart() {
 function calculateTotal() {
     // Calculate total price of the cart using the "cartList" array
     nuevoArrayPrecios = cartList.map(cartProducts => cartProducts.price);
-    total = 0;
-    for(let i = 0; i <= nuevoArrayPrecios.length; i++){
+    for(let i = 0; i < nuevoArrayPrecios.length; i++){
         total += nuevoArrayPrecios[i];
     }
 }
 
+
 // Exercise 4
-function generateCart() {
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
-    // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
-    cart = cartList
-    for(var item in cart){
-        // 2. Add found product to the cartList array
-        if (item.id == item.id) {
-            cart.pop(cart[item]);
-        }
+//Using the "cartlist" array that contains all the items in the shopping cart, 
+//generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+
+function generateCart(){
+    cart = cartList;
+
+    cart.forEach(function (element) {
+                element.cantidad = 1;
+      });
+
+    for (let i = 0; i < cart.length; i++) {
+
+        for (let j = 0; j < cart.length; j++) {
+            if (i !== j) { 
+                if (cart[i].id === cart[j].id) {
+                    cart[i].cantidad = cart[i].Cantidad + cart[j].cantidad;
+                    cart.pop(cart[j]);
+                }
+            }
+        }        
     }
-    return cart;
 }
+
+
+
+
+
 
 // Exercise 5
 var descuento = 0.15;
