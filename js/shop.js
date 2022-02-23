@@ -96,41 +96,87 @@ function calculateTotal() {
 //generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
 function generateCart(){
-    cart = cartList;
 
-    cart.forEach(function (element) {
-                element.cantidad = 1;
-      });
+    console.clear;
 
-    for (let i = 0; i < cart.length; i++) {
+    for (let i = 0; i < cartList.length; i++) {
+        
+       if (cart.some(articulo => articulo.id === cartList[i].id)){
 
-        for (let j = 0; j < cart.length; j++) {
-            if (i !== j) { 
-                if (cart[i].id === cart[j].id) {
-                    cart[i].cantidad = cart[i].Cantidad + cart[j].cantidad;
-                    cart.pop(cart[j]);
-                }
-            }
-        }        
-    }
+        console.log ("existe? SI")
+
+        let cartid = cart.find(o => o.id === cartList[i].id);
+
+        cartid.cantidad += 1;
+        cartid.subtotal += cartList[i].price;
+
+        console.log(cartid);
+ 
+       }else {
+        
+            console.log ("existe? NO");
+
+            
+            cartList[i].cantidad = 1;
+            cartList[i].subtotal = cartList[i].price;
+
+            cart.push(cartList[i]);
+
+       }
+
+
+        }
 }
 
-
-
-
+//Solucion forma 2
+// function generateCart(){
+//     cart = cartList;
+//     for (let i = 0; i < cart.length; i++) {
+//     cart[i].cantidad = 1;
+//     }
+//     for (let i = 0; i < cart.length; i++) {
+//         for (let j = i; j < cart.length; j++) {
+//             if (i !== j) { 
+//                 if (cart[i].id === cart[j].id) {
+//                     cart[i].cantidad += cart[j].cantidad;
+//                     cart.pop(cart[j]);
+//                 }
+//             }
+//         }        
+//     }
+// }
 
 
 // Exercise 5
-var descuento = 0.15;
-function applyPromotionsCart(cart) {
-    // Apply promotions to each item in the array "cart"
-    var precio = parseFloat(cart[item.price]);
-    var desc = parseInt(cart[item.price] * descuento); 
 
-    for(var item in cart){
-        precioFinal = descuento(precio - desc);
+function applyPromotionsCart() {
+    // Apply promotions to each item in the array "cart"
+
+    if (cart.some(articulo => articulo.name === 'cooking oil')) {
+
+    let cartoil = cart.find(o => o.name === 'cooking oil');
+
+        if (cartoil.cantidad >= 3) {
+
+            cartoil.subtotalWithDiscount = cartoil.cantidad * 10;
+
+        }
+
     }
-    descuento.innerHTML = precioFinal;
+
+    if (cart.some(articulo => articulo.name === 'Instant cupcake mixture')) {
+
+        let cartpastis = cart.find(o => o.name === 'Instant cupcake mixture');
+    
+            if (cartpastis.cantidad >= 10) {
+    
+                cartpastis.subtotalWithDiscount = ((cartpastis.price * 2 / 3) * cartpastis.cantidad);
+    
+            }
+    
+        }
+
+
 }
 
 
