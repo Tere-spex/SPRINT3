@@ -1,31 +1,29 @@
 // Get the input fields
 var password = document.querySelector(".password");
 var phone = document.querySelector('.phone');
-var name = document.querySelector('.name');
+var nameN = document.querySelector('.name');
 
 // Get the error elements
-var errorPassword = document.getElementById("errorPassword");
-var errorName = document.getElementById('errorName');  
-var errorPhone = document.getElementById('errorPhone');  
+var errorPassword = document.getElementById("errorPassword").innerHTML;
+var errorName = document.getElementById('errorName').innerHTML;  
+var errorPhone = document.getElementById('errorPhone').innerHTML;  
 
 // Exercise 6
 function validate() {
     // Validate fields entered by the user: name, phone, password, and email
-    if (password.type === "password") {
-        password.type = "text";
-    } else {
+    window.addEventListener("keypress", () => {password.value});
+    window.addEventListener("keypress", () => {phone.value});
+    window.addEventListener("keypress", () => {nameN.value});
+
+    if (nameN.value  == ""  || nameN["value"].length < 3) {
+        alert(errorName);
+    }
+    
+    if (password.value  == ""  || password["value"].length < 3) {
         alert(errorPassword);
     }
 
-    if (phone.type === "phone") {
-        phone.type = "number";
-    } else {
+   if (phone.value  == "" || phone["value"].length < 3) {
         alert(errorPhone);
-    }
-
-    if (name.type === "name") {
-        name.type = "text";
-    } else {
-       alert(errorName);
     }
 }
