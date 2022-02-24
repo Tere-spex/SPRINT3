@@ -27,6 +27,10 @@ function validate() {
     window.addEventListener("keypress", () => {phone.value});
     window.addEventListener("keypress", () => {nameN.value});
 
+    // inputName = nameN.value;
+    // inputPassword = password.value;
+    // inputPhone = phone.value;
+
     if (nameN.value  == ""  || nameN["value"].length < 3) {
         alert(errorName);
     }
