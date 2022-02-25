@@ -33,23 +33,23 @@ function validate() {
   window.addEventListener("keypress", () => {lastName.value});
 
   if (nameN.value  == ""  || nameN["value"].length < 3|| typeof nameN.value !== String) {
-      alert(errorName);
+      console.log(errorName);
   }
 
-  if (lastName.value  == ""  || lastName["value"].length < 3|| typeof lastName.value !== String) {
-    alert(errorLastName);
+  if (password.value  == ""  || password["value"].length < 3 || typeof password.value !== Number) {
+      console.log(errorPassword);
   }
 
-  if (password.value  == ""  || password["value"].length < 3) {
-      alert(errorPassword);
+ if (phone.value  == "" || phone["value"].length < 3) {
+      console.log(errorPhone);
   }
 
-  if (phone.value  == "" || phone["value"].length < 3 || typeof password.value !== Number) {
-      alert(errorPhone);
+if (email.value  == ""  || email["value"].length < 3) {
+    console.log(errorEmail);
   }
 
-  if (email.value  == ""  || email["value"].length < 3) {
-    alert(errorEmail);
+ if (lastName.value  == ""  || lastName["value"].length < 3|| typeof lastName.value !== String) {
+    console.log(errorLastName);
   }
 } 
 
