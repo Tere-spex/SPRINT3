@@ -10,38 +10,47 @@
 // Ajuda: podràs acolorir en la vora de l'input vermell i mostrar el missatge d'error manipulant el dom, encara que també pots usar la classe is-invalid de bootstrap.
 
 // Get the input fields
-var password = document.querySelector(".password");
-var phone = document.querySelector(".phone");
-var nameN = document.querySelector(".name");
+let password = document.querySelector(".password");
+let phone = document.querySelector(".phone");
+let nameN = document.querySelector(".name");
+let email = document.querySelector(".email");
+let lastName = document.querySelector(".lastname");
 
 // Get the error elements
-var errorPassword = document.getElementById("errorPassword").innerHTML;
-var errorName = document.getElementById("errorName").innerHTML;
-var errorPhone = document.getElementById("errorPhone").innerHTML;
+let errorPassword = document.getElementById("errorPassword").innerHTML;
+let errorName = document.getElementById("errorName").innerHTML;
+let errorPhone = document.getElementById("errorPhone").innerHTML;
+let errorEmail = document.getElementById("errorEmail").innerHTML;
+let errorLastName = document.getElementById("errorLastName").innerHTML;
 
 // Exercise 6
 function validate() {
-  let inputName = nameN.value;
-  let inputPassword = password.value;
-  let inputPhone = phone.value;
   // Validate fields entered by the user: name, phone, password, and email
-  window.addEventListener("keypress", () => {
-    if (inputPhone == "" || inputPhone.length < 3) {
-      alert(errorPhone);
-    }
-  });
-  window.addEventListener("keypress", () => {
-    if (inputPassword == "" || inputPassword.length < 3) {
-      alert(errorPassword);
-    }
-  });
-  window.addEventListener("keypress", () => {
-    if (inputName == "" || inputName.length < 3) {
-      alert(errorName);
-    }
-  });
-}
+  window.addEventListener("keypress", () => {password.value});
+  window.addEventListener("keypress", () => {Number(phone.value)});
+  window.addEventListener("keypress", () => {nameN.value});
+  window.addEventListener("keypress", () => {email.value});
+  window.addEventListener("keypress", () => {lastName.value});
 
-console.log(typeof phone.value); //string
-console.log(typeof parseInt(phone.value)); //number
-//|| password["value"].type !== password
+  if (nameN.value  == ""  || nameN["value"].length < 3|| typeof nameN.value !== String) {
+      alert(errorName);
+  }
+
+  if (lastName.value  == ""  || lastName["value"].length < 3|| typeof lastName.value !== String) {
+    alert(errorLastName);
+  }
+
+  if (password.value  == ""  || password["value"].length < 3) {
+      alert(errorPassword);
+  }
+
+  if (phone.value  == "" || phone["value"].length < 3 || typeof password.value !== Number) {
+      alert(errorPhone);
+  }
+
+  if (email.value  == ""  || email["value"].length < 3) {
+    alert(errorEmail);
+  }
+} 
+
+
