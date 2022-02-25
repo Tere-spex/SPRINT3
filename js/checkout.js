@@ -11,41 +11,37 @@
 
 // Get the input fields
 var password = document.querySelector(".password");
-var phone = document.querySelector('.phone');
-var nameN = document.querySelector('.name');
+var phone = document.querySelector(".phone");
+var nameN = document.querySelector(".name");
 
 // Get the error elements
 var errorPassword = document.getElementById("errorPassword").innerHTML;
-var errorName = document.getElementById('errorName').innerHTML;  
-var errorPhone = document.getElementById('errorPhone').innerHTML;  
-
+var errorName = document.getElementById("errorName").innerHTML;
+var errorPhone = document.getElementById("errorPhone").innerHTML;
 
 // Exercise 6
 function validate() {
-    // Validate fields entered by the user: name, phone, password, and email
-    window.addEventListener("keypress", () => {password.value});
-    window.addEventListener("keypress", () => {phone.value});
-    window.addEventListener("keypress", () => {nameN.value});
-
-    // inputName = nameN.value;
-    // inputPassword = password.value;
-    // inputPhone = phone.value;
-
-    if (nameN.value  == ""  || nameN["value"].length < 3) {
-        alert(errorName);
+  let inputName = nameN.value;
+  let inputPassword = password.value;
+  let inputPhone = phone.value;
+  // Validate fields entered by the user: name, phone, password, and email
+  window.addEventListener("keypress", () => {
+    if (inputPhone == "" || inputPhone.length < 3) {
+      alert(errorPhone);
     }
-
-    if (password.value  == ""  || password["value"].length < 3 ) {
-        alert(errorPassword);
+  });
+  window.addEventListener("keypress", () => {
+    if (inputPassword == "" || inputPassword.length < 3) {
+      alert(errorPassword);
     }
-
-   if (phone.value  == "" || phone["value"].length < 3) {
-        alert(errorPhone);
+  });
+  window.addEventListener("keypress", () => {
+    if (inputName == "" || inputName.length < 3) {
+      alert(errorName);
     }
- }
+  });
+}
 
-console.log(typeof phone.value);//string
-console.log(typeof parseInt(phone.value));//number
+console.log(typeof phone.value); //string
+console.log(typeof parseInt(phone.value)); //number
 //|| password["value"].type !== password
-
-   
