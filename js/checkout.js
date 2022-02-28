@@ -35,11 +35,11 @@ function validate() {
 
   let filterEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-  if (nameN.value  == ""  || nameN["value"].length < 3|| typeof nameN.value !== "string") {
+  if (nameN.value  == ""  || nameN["value"].length < 3|| nameN.value.match(/\d+/) !== null) {
       console.log(errorName);
   }
 
-  if (lastName.value  == ""  || lastName["value"].length < 3|| typeof lastName.value !== "string") {
+  if (lastName.value  == ""  || lastName["value"].length < 3|| lastName.value.match(/\d+/) !== null) {
     console.log(errorLastName);
   }
 
@@ -55,7 +55,7 @@ function validate() {
     console.log(errorAdress);
   }
 
- if (phone.value  == "" || phone["value"].length < 3 || typeof password.value !== Number) {
+ if (phone.value  == "" || phone["value"].length < 3 || phone.value.match(/\d+/) == null) {
       console.log(errorPhone);
   }
 }
