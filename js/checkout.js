@@ -1,6 +1,4 @@
 // En aquest exercici hauràs d'implementar la lògica perquè els camps del formulari compleixin les següents condicions:
-// - Tots els camps són obligatoris.
-// - Tots els camps han de tenir almenys 3 caràcters.
 // - El nom i cognoms han de contenir només lletres.
 // - El telèfon ha de contenir només números.
 // - La contrasenya ha d'incloure números i lletres.
@@ -10,47 +8,57 @@
 // Ajuda: podràs acolorir en la vora de l'input vermell i mostrar el missatge d'error manipulant el dom, encara que també pots usar la classe is-invalid de bootstrap.
 
 // Get the input fields
-let password = document.querySelector(".password");
-let phone = document.querySelector(".phone");
 let nameN = document.querySelector(".name");
+let lastName = document.querySelector(".lastName");
 let email = document.querySelector(".email");
-let lastName = document.querySelector(".lastname");
+let password = document.querySelector(".password");
+let address = document.querySelector(".address");
+let phone = document.querySelector(".phone");
 
 // Get the error elements
-let errorPassword = document.getElementById("errorPassword").innerHTML;
 let errorName = document.getElementById("errorName").innerHTML;
-let errorPhone = document.getElementById("errorPhone").innerHTML;
-let errorEmail = document.getElementById("errorEmail").innerHTML;
 let errorLastName = document.getElementById("errorLastName").innerHTML;
+let errorEmail = document.getElementById("errorEmail").innerHTML;
+let errorPassword = document.getElementById("errorPassword").innerHTML;
+let errorAdress = document.getElementById("errorAddress").innerHTML;
+let errorPhone = document.getElementById("errorPhone").innerHTML;
 
 // Exercise 6
 function validate() {
-  // Validate fields entered by the user: name, phone, password, and email
-  window.addEventListener("keypress", () => {password.value});
-  window.addEventListener("keypress", () => {Number(phone.value)});
+ // Validate fields entered by the user: name, phone, password, and email
   window.addEventListener("keypress", () => {nameN.value});
-  window.addEventListener("keypress", () => {email.value});
   window.addEventListener("keypress", () => {lastName.value});
+  window.addEventListener("keypress", () => {email.value});
+  window.addEventListener("keypress", () => {password.value});
+  window.addEventListener("keypress", () => {address.value});
+  window.addEventListener("keypress", () => {Number(phone.value)});
 
-  if (nameN.value  == ""  || nameN["value"].length < 3|| typeof nameN.value !== String) {
+  let filterEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+  if (nameN.value  == ""  || nameN["value"].length < 3|| typeof nameN.value !== "string") {
       console.log(errorName);
   }
 
-  if (password.value  == ""  || password["value"].length < 3 || typeof password.value !== Number) {
-      console.log(errorPassword);
-  }
-
- if (phone.value  == "" || phone["value"].length < 3) {
-      console.log(errorPhone);
-  }
-
-if (email.value  == ""  || email["value"].length < 3) {
-    console.log(errorEmail);
-  }
-
- if (lastName.value  == ""  || lastName["value"].length < 3|| typeof lastName.value !== String) {
+  if (lastName.value  == ""  || lastName["value"].length < 3|| typeof lastName.value !== "string") {
     console.log(errorLastName);
   }
-} 
+
+   if (!filterEmail.test(email.value) || email.value  == ""  || email["value"].length < 3){
+     console.log(errorEmail);
+   } 
+
+  if (password.value  == ""  || password["value"].length < 3) {
+    console.log(errorPassword);
+  }
+
+  if (address.value == "" || address["value"].length < 3) {
+    console.log(errorAdress);
+  }
+
+ if (phone.value  == "" || phone["value"].length < 3 || typeof password.value !== Number) {
+      console.log(errorPhone);
+  }
+}
+
 
 
