@@ -1,12 +1,3 @@
-// En aquest exercici hauràs d'implementar la lògica perquè els camps del formulari compleixin les següents condicions:
-// - El nom i cognoms han de contenir només lletres.
-// - El telèfon ha de contenir només números.
-// - La contrasenya ha d'incloure números i lletres.
-// - L'email ha de tenir format d'email.
-// Quan l'usuari introdueixi un camp que no compleixi les condicions anteriors, l'input s'ha de ressaltar en vermell i mostrar un missatge en la part inferior a manera de feedback a l'usuari, perquè sàpiga com rectificar.
-
-// Ajuda: podràs acolorir en la vora de l'input vermell i mostrar el missatge d'error manipulant el dom, encara que també pots usar la classe is-invalid de bootstrap.
-
 // Get the input fields
 let nameN = document.querySelector(".name");
 let lastName = document.querySelector(".lastName");
@@ -36,27 +27,33 @@ function validate() {
   let filterEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
   if (nameN.value  == ""  || nameN["value"].length < 3|| nameN.value.match(/\d+/) !== null) {
-      console.log(errorName);
+    nameN.style.border = "thin solid #FF0000";
+    document.getElementById("errorName").style.display = "inline";
   }
 
   if (lastName.value  == ""  || lastName["value"].length < 3|| lastName.value.match(/\d+/) !== null) {
-    console.log(errorLastName);
+    lastName.style.border = "thin solid #FF0000";
+    document.getElementById("errorLastName").style.display = "inline"; 
   }
 
-   if (!filterEmail.test(email.value) || email.value  == ""  || email["value"].length < 3){
-     console.log(errorEmail);
-   } 
+  if (!filterEmail.test(email.value) || email.value  == ""  || email["value"].length < 3){
+    email.style.border = "thin solid #FF0000";
+    document.getElementById("errorEmail").style.display = "inline"; 
+  } 
 
-  if (password.value  == ""  || password["value"].length < 3) {
-    console.log(errorPassword);
+  if (password.value  == ""  || password["value"].length < 3 || !password.value.match(/[a-zA-Z0-9]/gi)) {
+    password.style.border = "thin solid #FF0000";
+    document.getElementById("errorPassword").style.display = "inline"; 
   }
 
-  if (address.value == "" || address["value"].length < 3) {
-    console.log(errorAdress);
+  if (address.value == "" || address["value"].length < 3 || !address.value.match(/[a-zA-Z0-9]/gi)) {
+    address.style.border = "thin solid #FF0000";
+    document.getElementById("errorAddress").style.display = "inline"; 
   }
 
- if (phone.value  == "" || phone["value"].length < 3 || phone.value.match(/\d+/) == null) {
-      console.log(errorPhone);
+  if (phone.value  == "" || phone["value"].length < 3 || phone.value.match(/\d+/) == null) {
+    phone.style.border = "thin solid #FF0000";
+    document.getElementById("errorPhone").style.display = "inline"; 
   }
 }
 
