@@ -14,18 +14,10 @@ let errorPassword = document.getElementById("errorPassword").innerHTML;
 let errorAdress = document.getElementById("errorAddress").innerHTML;
 let errorPhone = document.getElementById("errorPhone").innerHTML;
 
+let filterEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
 // Exercise 6
 function validate() {
- // Validate fields entered by the user: name, phone, password, and email
-  window.addEventListener("keypress", () => {nameN.value});
-  window.addEventListener("keypress", () => {lastName.value});
-  window.addEventListener("keypress", () => {email.value});
-  window.addEventListener("keypress", () => {password.value});
-  window.addEventListener("keypress", () => {address.value});
-  window.addEventListener("keypress", () => {Number(phone.value)});
-
-  let filterEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
   if (nameN.value  == ""  || nameN["value"].length < 3|| nameN.value.match(/\d+/) !== null) {
     nameN.style.border = "thin solid #FF0000";
     document.getElementById("errorName").style.display = "inline";
@@ -56,6 +48,4 @@ function validate() {
     document.getElementById("errorPhone").style.display = "inline"; 
   }
 }
-
-
 
