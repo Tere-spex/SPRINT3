@@ -75,3 +75,4 @@ function validate() {
     document.getElementById("errorPhone").style.display = "none";
   };
 }
+
