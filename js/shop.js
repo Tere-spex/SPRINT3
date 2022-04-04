@@ -65,7 +65,7 @@ var total = 0;
 
 // Exercise 1
 function buy(id) {
-    // 1. Loop for to the array products to get the item to add to cart
+// 1. Loop for to the array products to get the item to add to cart
     for(var producto in products){
         // 2. Add found product to the cartList array
         if (id == producto) {
@@ -83,7 +83,7 @@ function cleanCart() {
 
 // Exercise 3
 function calculateTotal() {
-    // Calculate total price of the cart using the "cartList" array
+// Calculate total price of the cart using the "cartList" array
     nuevoArrayPrecios = cartList.map(cartProducts => cartProducts.price);
     for(let i = 0; i < nuevoArrayPrecios.length; i++){
         total += nuevoArrayPrecios[i];
@@ -96,87 +96,38 @@ function calculateTotal() {
 //generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
 
 function generateCart(){
-
     console.clear;
-
     for (let i = 0; i < cartList.length; i++) {
-        
        if (cart.some(articulo => articulo.id === cartList[i].id)){
-
         console.log ("existe? SI")
-
         let cartid = cart.find(o => o.id === cartList[i].id);
-
         cartid.cantidad += 1;
         cartid.subtotal += cartList[i].price;
-
         console.log(cartid);
- 
        }else {
-        
             console.log ("existe? NO");
-
-            
             cartList[i].cantidad = 1;
             cartList[i].subtotal = cartList[i].price;
-
             cart.push(cartList[i]);
-
        }
-
-
-        }
+    }
 }
 
-//Solucion forma 2
-// function generateCart(){
-//     cart = cartList;
-//     for (let i = 0; i < cart.length; i++) {
-//     cart[i].cantidad = 1;
-//     }
-//     for (let i = 0; i < cart.length; i++) {
-//         for (let j = i; j < cart.length; j++) {
-//             if (i !== j) { 
-//                 if (cart[i].id === cart[j].id) {
-//                     cart[i].cantidad += cart[j].cantidad;
-//                     cart.pop(cart[j]);
-//                 }
-//             }
-//         }        
-//     }
-// }
-
-
 // Exercise 5
-
 function applyPromotionsCart() {
-    // Apply promotions to each item in the array "cart"
-
+// Apply promotions to each item in the array "cart"
     if (cart.some(articulo => articulo.name === 'cooking oil')) {
-
-    let cartoil = cart.find(o => o.name === 'cooking oil');
-
+        let cartoil = cart.find(o => o.name === 'cooking oil');
         if (cartoil.cantidad >= 3) {
-
             cartoil.subtotalWithDiscount = cartoil.cantidad * 10;
-
         }
-
-    }
-
+    };
     if (cart.some(articulo => articulo.name === 'Instant cupcake mixture')) {
-
         let cartpastis = cart.find(o => o.name === 'Instant cupcake mixture');
-    
-            if (cartpastis.cantidad >= 10) {
-    
-                cartpastis.subtotalWithDiscount = ((cartpastis.price * 2 / 3) * cartpastis.cantidad);
-    
-            }
-    
+        if (cartpastis.cantidad >= 10) {
+            cartpastis.subtotalWithDiscount = ((cartpastis.price * 2 / 3) * cartpastis.cantidad);
         }
-
-
+    }
 }
 
 

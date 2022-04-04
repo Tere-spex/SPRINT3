@@ -9,3 +9,7 @@ body {
     font-size: x-small;
     color: red;
 }  
+
+.error{
+    border: solid 2px red;
+}

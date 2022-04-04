@@ -1,51 +1,77 @@
 // Get the input fields
-let nameN = document.querySelector(".name");
-let lastName = document.querySelector(".lastName");
-let email = document.querySelector(".email");
-let password = document.querySelector(".password");
-let address = document.querySelector(".address");
-let phone = document.querySelector(".phone");
+let inputName = document.getElementById("fName");
+let inputLastN = document.getElementById("fLastN");
+let inputEmail = document.getElementById("fEmail");
+let inputPassword = document.getElementById("fPassword");
+let inputAddress = document.getElementById("fAddress");
+let inputPhone = document.getElementById("fPhone");
 
 // Get the error elements
-let errorName = document.getElementById("errorName").innerHTML;
-let errorLastName = document.getElementById("errorLastName").innerHTML;
-let errorEmail = document.getElementById("errorEmail").innerHTML;
-let errorPassword = document.getElementById("errorPassword").innerHTML;
-let errorAdress = document.getElementById("errorAddress").innerHTML;
-let errorPhone = document.getElementById("errorPhone").innerHTML;
+let errorName = document.getElementById("errorName");
+let errorLastN = document.getElementById("errorLastN");
+let errorEmail = document.getElementById("errorEmail");
+let errorPassword = document.getElementById("errorPassword");
+let errorAdress = document.getElementById("errorAddress");
+let errorPhone = document.getElementById("errorPhone");
 
-let filterEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+//Expresiones regulares
+const expresiones = {
+  usuario: /^[a-zA-Z0-9\_\-]{4,16}$/,
+  name: /^[a-zA-ZÀ-Ÿ\s]{1,40}$/,
+  password: /^.{4,12}$/,
+  email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+  phone: /^\(?(\d{3})\)?[-]?(\d{2})[-]?(\d{2})[-]?(\d{2})$/,
+  address: /^[#.0-9a-zA-Z\s,-]+$/
+}
 
 // Exercise 6
 function validate() {
-  if (nameN.value  == ""  || nameN["value"].length < 3|| nameN.value.match(/\d+/) !== null) {
-    nameN.style.border = "thin solid #FF0000";
-    document.getElementById("errorName").style.display = "inline";
-  }
+// Validate fields entered by the user: name, phone, password, and email
+  if (inputName.value == "" || inputName.value.length < 3|| !expresiones.name.test(inputName.value)) {
+    inputName.style.border = "thin solid #FF0000";
+    errorName.style.display = "inline";
+  }else{
+    inputName.style.border = "thin solid #00FF00";
+    errorName.style.display = "none";
+  };
 
-  if (lastName.value  == ""  || lastName["value"].length < 3|| lastName.value.match(/\d+/) !== null) {
-    lastName.style.border = "thin solid #FF0000";
-    document.getElementById("errorLastName").style.display = "inline"; 
-  }
+  if (inputLastN.value  == "" || inputLastN.value.length < 3|| !expresiones.name.test(inputLastN.value)) {
+    inputLastN.style.border = "thin solid #FF0000";
+    errorLastN.style.display = "inline"; 
+  }else{
+    inputLastN.style.border = "thin solid #00FF00";
+    errorLastN.style.display = "none";
+  };
 
-  if (!filterEmail.test(email.value) || email.value  == ""  || email["value"].length < 3){
-    email.style.border = "thin solid #FF0000";
-    document.getElementById("errorEmail").style.display = "inline"; 
-  } 
+  if (inputEmail.value  == "" || inputEmail.value.length < 3 || !expresiones.email.test(inputEmail.value)) {
+    inputEmail.style.border = "thin solid #FF0000";
+    errorEmail.style.display = "inline"; 
+  } else {
+    inputEmail.style.border = "thin solid #00FF00";
+    errorEmail.style.display = "none";
+  };
 
-  if (password.value  == ""  || password["value"].length < 3 || !password.value.match(/[a-zA-Z0-9]/gi)) {
-    password.style.border = "thin solid #FF0000";
-    document.getElementById("errorPassword").style.display = "inline"; 
-  }
+  if (inputPassword.value  == "" || inputPassword.value.length < 3 || !expresiones.password.test(inputPassword.value)) {
+    inputPassword.style.border = "thin solid #FF0000";
+    errorPassword.style.display = "inline"; 
+  }else{
+    inputPassword.style.border = "thin solid #00FF00";
+    errorPassword.style.display = "none";
+  };
 
-  if (address.value == "" || address["value"].length < 3 || !address.value.match(/[a-zA-Z0-9]/gi)) {
-    address.style.border = "thin solid #FF0000";
+  if (inputAddress.value == "" || inputAddress.value.length < 3 || !expresiones.address.test(inputAddress.value)) {
+    inputAddress.style.border = "thin solid #FF0000";
     document.getElementById("errorAddress").style.display = "inline"; 
-  }
+  }else{
+    inputAddress.style.border = "thin solid #00FF00";
+    document.getElementById("errorAddress").style.display = "none";
+  };
 
-  if (phone.value  == "" || phone["value"].length < 3 || phone.value.match(/\d+/) == null) {
-    phone.style.border = "thin solid #FF0000";
+  if (inputPhone.value  == "" || inputPhone.value.length < 3 || !expresiones.phone.test(inputPhone.value)) {  
+    inputPhone.style.border = "thin solid #FF0000";
     document.getElementById("errorPhone").style.display = "inline"; 
-  }
+  }else{
+    inputPhone.style.border = "thin solid #00FF00";
+    document.getElementById("errorPhone").style.display = "none";
+  };
 }
-
